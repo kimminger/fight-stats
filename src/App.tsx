@@ -1,35 +1,60 @@
-// @ts-ignore
 import React from "react";
+import { useTranslation } from "react-i18next";
+import "./App.css";
 import { RocketIcon, BarChart3, Users } from "lucide-react";
-import "./styles.css";
 
-export default function LandingPage() {
+export default function App() {
+    const { t, i18n } = useTranslation();
+
     return (
-        <div className="container">
-            <h1>FightStats</h1>
-            <p>Datenbasierte Analyse im Grappling – BJJ, MMA, Ringen & mehr.</p>
-
-            <div className="grid">
-                <div className="card">
-                    <RocketIcon className="icon" color="#60a5fa" />
-                    <h3>Schneller Fortschritt</h3>
-                    <p>Nutze detaillierte Match-Analysen, um deine Skills gezielt zu verbessern.</p>
-                </div>
-
-                <div className="card">
-                    <BarChart3 className="icon" color="#34d399" />
-                    <h3>Kampfdaten verstehen</h3>
-                    <p>Statistiken zu Takedowns, Submissions, Guard Work & mehr – einfach visualisiert.</p>
-                </div>
-
-                <div className="card">
-                    <Users className="icon" color="#c084fc" />
-                    <h3>Für Athleten & Teams</h3>
-                    <p>Ob Einsteiger oder Coach – FightStats bringt datengetriebenes Training in dein Gym.</p>
-                </div>
+        <div className="page">
+            {/* Language Selector */}
+            <div className="language-selector">
+                <select
+                    value={i18n.language}
+                    onChange={(e) => i18n.changeLanguage(e.target.value)}
+                    style={{marginBottom: "2rem", padding: "0.5rem"}}
+                >
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                </select>
             </div>
 
-            <button className="button">Frühzugang sichern</button>
+            {/* Main Content */}
+            <main className="container">
+                <h1 className="title">{t("title")}</h1>
+                <p className="subtitle">
+                    {t("subtitle")}
+                </p>
+
+                <div className="cards">
+                    <div className="card">
+                        <RocketIcon className="icon blue" />
+                        <h3>{t("card1Title")}</h3>
+                        <p>
+                            {t("card1Text")}
+                        </p>
+                    </div>
+
+                    <div className="card">
+                        <BarChart3 className="icon green" />
+                        <h3>{t("card2Title")}</h3>
+                        <p>
+                            {t("card2Text")}
+                        </p>
+                    </div>
+
+                    <div className="card">
+                        <Users className="icon purple" />
+                        <h3>{t("card3Title")}</h3>
+                        <p>
+                            {t("card3Text")}
+                        </p>
+                    </div>
+                </div>
+
+                <button className="cta-button">{t("cta")}</button>
+            </main>
         </div>
     );
 }
