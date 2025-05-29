@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# Fight-stats.com - Landing Page
 
 ## Installation Steps
 
